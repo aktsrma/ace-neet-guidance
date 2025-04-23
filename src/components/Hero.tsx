@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import LogoGlow from "./LogoGlow";
@@ -39,24 +38,30 @@ const Hero = () => {
               </Link>
             </div>
           </div>
-          <div className="relative bg-gradient-to-br from-neet-background/50 to-neet-background/30 rounded-xl flex items-center justify-center p-8 backdrop-blur-sm border border-neet-primary/20">
-            <div className="text-center space-y-4 text-neet-text relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-neet-primary/20 via-transparent to-neet-primary/20 blur-3xl"></div>
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                className="h-24 w-24 mx-auto text-neet-primary relative"
-                fill="none" 
-                viewBox="0 0 24 24" 
-                stroke="currentColor"
-              >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={1} 
-                  d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                />
-              </svg>
-              <p className="text-lg font-medium relative">Designed for NEET Success</p>
+          <div className="relative group">
+            <div className="absolute -inset-1 bg-gradient-to-r from-neet-primary via-neet-secondary to-neet-primary rounded-xl opacity-75 blur-xl group-hover:opacity-100 transition duration-1000"></div>
+            <div className="relative bg-gradient-to-br from-neet-background/80 to-neet-background/60 rounded-xl flex items-center justify-center p-8 backdrop-blur-md border border-neet-primary/30 shadow-xl shadow-neet-primary/10">
+              <div className="text-center space-y-4 text-neet-text relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-neet-primary/20 via-transparent to-neet-primary/20 blur-3xl"></div>
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className="h-24 w-24 mx-auto text-neet-primary group-hover:scale-110 transition-transform duration-300 relative"
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={1} 
+                    d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+                    className="stroke-current"
+                  />
+                </svg>
+                <p className="text-lg font-medium relative text-neet-primary group-hover:text-white transition-colors duration-300">
+                  Designed for NEET Success
+                </p>
+              </div>
             </div>
           </div>
         </div>
