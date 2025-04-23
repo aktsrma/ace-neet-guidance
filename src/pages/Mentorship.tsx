@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -6,9 +5,19 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { initializePayment } from "@/utils/razorpay";
+import { toast } from "@/components/ui/sonner";
 
 const Mentorship = () => {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+
+  const handlePayment = async (amount: number, plan: string) => {
+    try {
+      await initializePayment(amount, plan);
+    } catch (error) {
+      toast.error("Payment initialization failed. Please try again.");
+    }
+  };
 
   const mentors = [
     {
@@ -75,14 +84,18 @@ const Mentorship = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white font-body">
+    <div className="min-h-screen bg-neet-background font-body">
       <Navbar />
       
-      <div className="py-12 bg-neet-background">
+      <div className="py-12 bg-gradient-to-r from-neet-background via-neet-accent to-neet-background">
         <div className="container px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-3xl md:text-5xl font-bold font-heading text-neet-text mb-4">Expert NEET Mentorship</h1>
-            <p className="text-lg text-neet-lightText">Personalized guidance to help you achieve your medical college dreams</p>
+            <h1 className="text-3xl md:text-5xl font-bold font-heading text-neet-primary mb-4 bg-clip-text text-transparent bg-gradient-to-r from-neet-primary via-neet-secondary to-neet-primary">
+              Expert NEET Mentorship
+            </h1>
+            <p className="text-lg text-neet-lightText">
+              Personalized guidance to help you achieve your medical college dreams
+            </p>
           </div>
         </div>
       </div>
@@ -97,7 +110,7 @@ const Mentorship = () => {
           
           <TabsContent value="plans">
             <div className="grid md:grid-cols-2 gap-8">
-              <Card className="border border-gray-200">
+              <Card className="border border-neet-primary/20 bg-gradient-to-b from-transparent to-neet-accent/5 backdrop-blur-sm">
                 <CardHeader>
                   <CardTitle className="text-xl font-heading text-neet-text">One-Time Mentorship Call</CardTitle>
                   <CardDescription>Perfect for specific doubts and questions</CardDescription>
@@ -171,22 +184,24 @@ const Mentorship = () => {
                 </CardContent>
                 <CardFooter>
                   <Button 
-                    className="w-full bg-neet-primary hover:bg-neet-secondary"
-                    onClick={() => handleSelectPlan("one-time")}
+                    className="w-full bg-gradient-to-r from-neet-primary to-neet-secondary hover:opacity-90 transition-opacity"
+                    onClick={() => handlePayment(199, "One-Time Call")}
                   >
                     Book Now - ₹199
                   </Button>
                 </CardFooter>
               </Card>
               
-              <Card className="border-2 border-neet-primary shadow-lg">
+              <Card className="border-2 border-neet-primary shadow-lg bg-gradient-to-b from-transparent to-neet-accent/10 backdrop-blur-sm">
                 <CardHeader>
                   <div className="flex justify-between items-center">
                     <div>
                       <CardTitle className="text-xl font-heading text-neet-text">One-Year Mentorship</CardTitle>
                       <CardDescription>Comprehensive support for your NEET journey</CardDescription>
                     </div>
-                    <span className="inline-block bg-neet-primary text-white text-xs px-2 py-1 rounded-full font-medium">Most Popular</span>
+                    <span className="inline-block bg-gradient-to-r from-neet-primary to-neet-secondary text-white text-xs px-2 py-1 rounded-full font-medium">
+                      Most Popular
+                    </span>
                   </div>
                 </CardHeader>
                 <CardContent>
@@ -288,8 +303,8 @@ const Mentorship = () => {
                 </CardContent>
                 <CardFooter>
                   <Button 
-                    className="w-full bg-neet-primary hover:bg-neet-secondary"
-                    onClick={() => handleSelectPlan("yearly")}
+                    className="w-full bg-gradient-to-r from-neet-primary to-neet-secondary hover:opacity-90 transition-opacity"
+                    onClick={() => handlePayment(1999, "One-Year Mentorship")}
                   >
                     Enroll Now - ₹1999
                   </Button>
@@ -339,7 +354,7 @@ const Mentorship = () => {
         </Tabs>
       </div>
       
-      <section className="py-12 bg-neet-background">
+      <section className="py-12 bg-gradient-to-r from-neet-background via-neet-accent to-neet-background">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="space-y-4 md:w-1/2">
@@ -349,8 +364,13 @@ const Mentorship = () => {
               </p>
             </div>
             <div className="md:w-1/2 flex flex-col sm:flex-row gap-4">
-              <Button className="bg-neet-primary hover:bg-neet-secondary">Contact Support</Button>
-              <Button variant="outline" className="border-neet-primary text-neet-primary hover:bg-neet-background">
+              <Button className="bg-gradient-to-r from-neet-primary to-neet-secondary hover:opacity-90 transition-opacity">
+                Contact Support
+              </Button>
+              <Button 
+                variant="outline" 
+                className="border-neet-primary text-neet-primary hover:bg-neet-accent/10"
+              >
                 Schedule a Demo Call
               </Button>
             </div>
