@@ -1,28 +1,29 @@
+
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import LogoGlow from "./LogoGlow";
 
 const Hero = () => {
   return (
-    <section className="relative py-16 md:py-24 bg-gradient-to-b from-neet-background via-neet-background/95 to-neet-background/90 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-neet-primary/20 via-transparent to-transparent"></div>
+    <section className="relative py-16 md:py-24 bg-gradient-radial from-neet-background via-neet-background/95 to-neet-background/90 overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-neet-primary/10 via-transparent to-transparent animate-pulse"></div>
       <div className="container px-4 md:px-6 relative">
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
           <div className="space-y-4">
-            <div className="flex justify-start mb-8">
+            <div className="flex justify-start mb-8 animate-float">
               <LogoGlow />
             </div>
-            <h1 className="text-3xl md:text-5xl font-bold font-heading bg-gradient-to-r from-neet-primary via-neet-secondary to-neet-primary bg-clip-text text-transparent animate-gradient leading-tight">
+            <h1 className="text-3xl md:text-5xl font-bold font-heading gradient-text animate-shimmer leading-tight">
               Transform Your NEET Preparation with Expert Mentorship
             </h1>
-            <p className="md:text-xl text-neet-lightText/90 font-body">
+            <p className="md:text-xl text-neet-lightText/90 font-body animate-fade-in">
               Personalized guidance from top MBBS students who have conquered the NEET exam. Your success, our mission.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link to="/mentorship">
                 <Button 
                   size="lg" 
-                  className="bg-gradient-to-r from-neet-primary to-neet-secondary hover:from-neet-secondary hover:to-neet-primary transition-all duration-300 font-medium shadow-lg shadow-neet-primary/25"
+                  className="bg-gradient-to-r from-neet-gradient-1 via-neet-gradient-2 to-neet-gradient-3 hover:from-neet-gradient-3 hover:to-neet-gradient-1 transition-all duration-500 font-medium shadow-lg shadow-neet-primary/25 animate-shimmer"
                 >
                   Explore Mentorship
                 </Button>
@@ -31,7 +32,7 @@ const Hero = () => {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="border-2 border-neet-primary text-neet-primary hover:bg-neet-primary/10 font-medium backdrop-blur-sm"
+                  className="border-2 border-neet-primary text-neet-primary hover:bg-neet-primary/10 font-medium backdrop-blur-sm hover-scale"
                 >
                   College Counseling
                 </Button>
@@ -39,13 +40,13 @@ const Hero = () => {
             </div>
           </div>
           <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-neet-primary via-neet-secondary to-neet-primary rounded-xl opacity-75 blur-xl group-hover:opacity-100 transition duration-1000"></div>
-            <div className="relative bg-gradient-to-br from-neet-background/80 to-neet-background/60 rounded-xl flex items-center justify-center p-8 backdrop-blur-md border border-neet-primary/30 shadow-xl shadow-neet-primary/10">
+            <div className="absolute -inset-1 bg-gradient-to-r from-neet-gradient-1 via-neet-gradient-2 to-neet-gradient-3 rounded-xl opacity-75 blur-xl group-hover:opacity-100 transition duration-1000"></div>
+            <div className="glass-card relative rounded-xl flex items-center justify-center p-8">
               <div className="text-center space-y-4 text-neet-text relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-neet-primary/20 via-transparent to-neet-primary/20 blur-3xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-neet-primary/20 via-transparent to-neet-primary/20 blur-3xl animate-pulse"></div>
                 <svg 
                   xmlns="http://www.w3.org/2000/svg" 
-                  className="h-24 w-24 mx-auto text-neet-primary group-hover:scale-110 transition-transform duration-300 relative"
+                  className="h-24 w-24 mx-auto text-neet-primary group-hover:scale-110 transition-transform duration-300 relative animate-float"
                   fill="none" 
                   viewBox="0 0 24 24" 
                   stroke="currentColor"
@@ -58,7 +59,7 @@ const Hero = () => {
                     className="stroke-current"
                   />
                 </svg>
-                <p className="text-lg font-medium relative text-neet-primary group-hover:text-white transition-colors duration-300">
+                <p className="text-lg font-medium relative gradient-text group-hover:text-white transition-colors duration-300">
                   Designed for NEET Success
                 </p>
               </div>
