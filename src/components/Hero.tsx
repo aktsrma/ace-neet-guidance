@@ -4,15 +4,15 @@ import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-neet-background to-white">
+    <section className="py-16 md:py-24 bg-neet-background">
       <div className="container px-4 md:px-6">
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
           <div className="space-y-4">
-            <h1 className="text-3xl md:text-5xl font-bold font-heading text-neet-text leading-tight">
-              Ace Your NEET Exam with Expert Mentorship
+            <h1 className="text-3xl md:text-5xl font-bold font-heading text-neet-primary leading-tight">
+              Transform Your NEET Preparation with Expert Mentorship
             </h1>
             <p className="md:text-xl text-neet-lightText font-body">
-              Get personalized guidance from top MBBS students from premier medical colleges across India.
+              Personalized guidance from top MBBS students who have conquered the NEET exam. Your success, our mission.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link to="/mentorship">
@@ -27,12 +27,24 @@ const Hero = () => {
               </Link>
             </div>
           </div>
-          <div className="relative aspect-video lg:aspect-square overflow-hidden rounded-xl">
-            <img 
-              src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1032&auto=format&fit=crop"
-              alt="Medical students studying" 
-              className="object-cover w-full h-full"
-            />
+          <div className="bg-neet-background rounded-xl flex items-center justify-center p-8">
+            <div className="text-center space-y-4 text-neet-text">
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                className="h-24 w-24 mx-auto text-neet-primary"
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={1} 
+                  d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+                />
+              </svg>
+              <p className="text-lg font-medium">Designed for NEET Success</p>
+            </div>
           </div>
         </div>
       </div>
