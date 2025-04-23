@@ -1,14 +1,13 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import LogoGlow from "./LogoGlow";
 
 const Hero = () => {
   return (
-    <section className="relative py-16 md:py-24 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-radial from-neet-primary/20 via-transparent to-transparent opacity-50"></div>
+    <section className="relative py-12 md:py-16 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0066cc]/10 via-[#1a75ff]/5 to-transparent"></div>
       <div className="container px-4 md:px-6 relative">
-        <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+        <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center max-w-5xl mx-auto">
           <div className="space-y-4">
             <div className="flex justify-start mb-8 animate-float">
               <LogoGlow />
