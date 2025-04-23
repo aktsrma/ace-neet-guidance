@@ -61,7 +61,18 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+                // Custom colors for NEET Ace Mentor
+                neet: {
+                    primary: '#1A5D1A', // Medical green
+                    secondary: '#4FA84F', // Lighter green
+                    accent: '#7FC47F', // Pastel green
+                    text: '#1A1F2C', // Dark text
+                    lightText: '#586174', // Light text
+                    background: '#F8FCFA', // Light green-tinted background
+                    white: '#FFFFFF',
+                    highlight: '#FF6B6B', // Accent red for important elements
+                }
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -89,7 +100,11 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+			},
+            fontFamily: {
+                heading: ['Poppins', 'sans-serif'],
+                body: ['Nunito', 'sans-serif']
+            }
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
