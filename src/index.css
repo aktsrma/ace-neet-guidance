@@ -7,51 +7,51 @@
 
 @layer base {
   :root {
-    --background: 215 85% 4%;
+    --background: 215 70% 10%;
     --foreground: 184 100% 97%;
-    --card: 215 85% 6%;
+    --card: 215 70% 15%;
     --card-foreground: 184 100% 97%;
-    --popover: 215 85% 4%;
+    --popover: 215 70% 10%;
     --popover-foreground: 184 100% 97%;
-    --primary: 184 100% 55%;
-    --primary-foreground: 215 85% 4%;
-    --secondary: 215 85% 8%;
+    --primary: 184 100% 65%;
+    --primary-foreground: 215 70% 10%;
+    --secondary: 215 50% 20%;
     --secondary-foreground: 184 100% 97%;
-    --muted: 215 85% 12%;
-    --muted-foreground: 184 40% 85%;
-    --accent: 184 100% 55%;
-    --accent-foreground: 215 85% 4%;
-    --destructive: 0 84% 42%;
+    --muted: 215 50% 25%;
+    --muted-foreground: 184 60% 90%;
+    --accent: 184 100% 65%;
+    --accent-foreground: 215 70% 10%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 184 100% 97%;
-    --border: 215 85% 12%;
-    --input: 215 85% 12%;
-    --ring: 184 100% 55%;
+    --border: 215 50% 20%;
+    --input: 215 50% 20%;
+    --ring: 184 100% 65%;
     --radius: 0.5rem;
   }
 
   * {
-    @apply border-border selection:bg-neet-primary/20 selection:text-white;
+    @apply border-border selection:bg-neet-primary/30 selection:text-white;
   }
 
   body {
     @apply bg-neet-background text-neet-text antialiased;
     background-image: radial-gradient(circle at center,
-        rgba(23, 235, 255, 0.03) 0%,
-        rgba(0, 10, 20, 0) 70%);
+        rgba(23, 235, 255, 0.05) 0%,
+        rgba(0, 20, 40, 0) 70%);
   }
 
   .glass-card {
-    @apply bg-white/[0.01] backdrop-blur-sm border border-white/[0.03] relative overflow-hidden;
-    box-shadow: 0 4px 24px -2px rgba(23, 235, 255, 0.05);
+    @apply bg-neet-card border border-white/10 relative overflow-hidden;
+    box-shadow: 0 8px 32px -4px rgba(23, 235, 255, 0.15);
   }
 
   .glass-card::before {
     content: '';
-    @apply absolute inset-0 bg-gradient-to-br from-white/[0.01] to-transparent;
+    @apply absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent;
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-neet-primary/95 via-neet-gradient-2/95 to-neet-gradient-3/95 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-neet-primary via-neet-gradient-2 to-neet-gradient-3 bg-clip-text text-transparent font-bold;
     background-size: 200% auto;
   }
 
@@ -61,15 +61,14 @@
 
   .gradient-border::before {
     content: '';
-    @apply absolute -inset-[1px] rounded-xl bg-gradient-to-r from-neet-primary/20 via-neet-gradient-2/20 to-neet-gradient-3/20 opacity-30 blur-sm transition-opacity duration-500;
+    @apply absolute -inset-[1px] rounded-xl bg-gradient-to-r from-neet-primary/50 via-neet-gradient-2/50 to-neet-gradient-3/50 opacity-70 blur-sm transition-opacity duration-500;
   }
 
   .gradient-border:hover::before {
-    @apply opacity-40;
+    @apply opacity-100;
   }
 
   .hover-scale {
     @apply transition-transform duration-500 hover:scale-[1.02];
   }
 }
-
