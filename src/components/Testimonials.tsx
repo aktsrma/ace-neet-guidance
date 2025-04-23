@@ -5,19 +5,19 @@ const Testimonials = () => {
   const testimonials = [
     {
       name: "Priya Sharma",
-      college: "AIIMS Delhi, 1st Year",
-      content: "The mentorship program helped me clarify my concepts and organize my study schedule. My mentor from AIIMS guided me throughout my preparation journey.",
+      achievement: "NEET Top 100 Rank",
+      content: "The mentorship program helped me clarify my concepts and organize my study schedule. My mentor's guidance was instrumental in my success.",
       image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=688&auto=format&fit=crop"
     },
     {
       name: "Rahul Singh",
-      college: "Maulana Azad Medical College, 2nd Year",
+      achievement: "Achieved Target Score",
       content: "I was struggling with Physics and Chemistry until I joined NEET Ace Mentor. The one-year mentorship transformed my approach to these subjects.",
       image: "https://images.unsplash.com/photo-1566492031773-4f4e44671857?q=80&w=687&auto=format&fit=crop"
     },
     {
       name: "Aditya Patel",
-      college: "Christian Medical College, Vellore",
+      achievement: "Secured Medical Seat",
       content: "The college counseling service helped me make the right choice based on my rank. I'm thankful for the detailed analysis and guidance.",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=687&auto=format&fit=crop"
     }
@@ -46,7 +46,7 @@ const Testimonials = () => {
                   <div>
                     <p className="text-neet-lightText font-body italic mb-4">"{testimonial.content}"</p>
                     <h4 className="font-heading font-semibold text-neet-text">{testimonial.name}</h4>
-                    <p className="text-sm text-neet-secondary">{testimonial.college}</p>
+                    <p className="text-sm text-neet-secondary font-medium">{testimonial.achievement}</p>
                   </div>
                 </div>
               </CardContent>
