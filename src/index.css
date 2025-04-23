@@ -7,26 +7,26 @@
 
 @layer base {
   :root {
-    --background: 201 71% 7%;
-    --foreground: 186 100% 95%;
-    --card: 201 71% 10%;
-    --card-foreground: 186 100% 95%;
-    --popover: 201 71% 7%;
-    --popover-foreground: 186 100% 95%;
-    --primary: 186 84% 42%;
-    --primary-foreground: 186 100% 95%;
-    --secondary: 201 71% 16%;
-    --secondary-foreground: 186 100% 95%;
-    --muted: 201 40% 20%;
-    --muted-foreground: 186 40% 80%;
-    --accent: 187 84% 32%;
-    --accent-foreground: 186 100% 95%;
+    --background: 217 71% 5%;
+    --foreground: 210 40% 98%;
+    --card: 217 71% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 217 71% 5%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217 71% 12%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 40% 20%;
+    --muted-foreground: 215 20% 75%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 210 40% 98%;
     --destructive: 0 84% 42%;
-    --destructive-foreground: 186 100% 95%;
-    --border: 201 40% 18%;
-    --input: 201 40% 18%;
-    --ring: 186 84% 42%;
-    --radius: 0.75rem;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 40% 15%;
+    --input: 217 40% 15%;
+    --ring: 199 89% 48%;
+    --radius: 0.5rem;
   }
 
   * {
@@ -36,17 +36,22 @@
   body {
     @apply bg-neet-background text-neet-text antialiased;
     background-image: radial-gradient(circle at center,
-        rgba(0, 183, 255, 0.08) 0%,
-        rgba(0, 28, 44, 0) 70%);
+        rgba(0, 157, 255, 0.03) 0%,
+        rgba(2, 17, 31, 0) 70%);
   }
 
   .glass-card {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10;
-    box-shadow: 0 4px 32px -2px rgba(0, 183, 255, 0.1);
+    @apply bg-white/[0.02] backdrop-blur-sm border border-white/[0.05] relative overflow-hidden;
+    box-shadow: 0 4px 24px -2px rgba(0, 157, 255, 0.05);
+  }
+
+  .glass-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent;
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-neet-primary via-neet-gradient-2 to-neet-gradient-3 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-neet-primary/90 via-neet-gradient-2/90 to-neet-gradient-3/90 bg-clip-text text-transparent;
     background-size: 200% auto;
   }
 
@@ -56,14 +61,14 @@
 
   .gradient-border::before {
     content: '';
-    @apply absolute -inset-[1px] rounded-xl bg-gradient-to-r from-neet-primary/40 via-neet-gradient-2/40 to-neet-gradient-3/40 opacity-40 blur-sm transition-opacity duration-500;
+    @apply absolute -inset-[1px] rounded-xl bg-gradient-to-r from-neet-primary/20 via-neet-gradient-2/20 to-neet-gradient-3/20 opacity-30 blur-sm transition-opacity duration-500;
   }
 
   .gradient-border:hover::before {
-    @apply opacity-60;
+    @apply opacity-40;
   }
 
   .hover-scale {
-    @apply transition-transform duration-300 hover:scale-105;
+    @apply transition-transform duration-500 hover:scale-[1.02];
   }
 }
