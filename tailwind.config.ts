@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -53,18 +54,18 @@ export default {
           foreground: 'hsl(var(--card-foreground))'
         },
         neet: {
-          primary: '#2563eb',
-          secondary: '#1e40af',
-          accent: '#3b82f6',
+          primary: '#0066cc',
+          secondary: '#0052a3',
+          accent: '#1a75ff',
           text: '#0f172a',
           lightText: '#334155',
           background: '#ffffff',
           card: '#f8fafc',
           white: '#ffffff',
-          highlight: '#2563eb',
-          'gradient-1': '#2563eb',
-          'gradient-2': '#3b82f6',
-          'gradient-3': '#1e40af',
+          highlight: '#0066cc',
+          'gradient-1': '#0066cc',
+          'gradient-2': '#1a75ff',
+          'gradient-3': '#0052a3',
           'card-bg': 'rgba(248, 250, 252, 0.95)',
           'glass': 'rgba(255, 255, 255, 0.9)',
         }
