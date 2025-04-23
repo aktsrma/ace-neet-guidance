@@ -8,21 +8,21 @@
 @layer base {
   :root {
     --background: 200 100% 9%;
-    --foreground: 180 100% 97%;
+    --foreground: 186 100% 95%;
     --card: 200 100% 9%;
-    --card-foreground: 180 100% 97%;
+    --card-foreground: 186 100% 95%;
     --popover: 200 100% 9%;
-    --popover-foreground: 180 100% 97%;
+    --popover-foreground: 186 100% 95%;
     --primary: 186 100% 50%;
-    --primary-foreground: 180 100% 97%;
+    --primary-foreground: 186 100% 95%;
     --secondary: 200 80% 41%;
-    --secondary-foreground: 180 100% 97%;
+    --secondary-foreground: 186 100% 95%;
     --muted: 200 40% 20%;
-    --muted-foreground: 180 40% 80%;
+    --muted-foreground: 186 40% 80%;
     --accent: 187 100% 42%;
-    --accent-foreground: 180 100% 97%;
+    --accent-foreground: 186 100% 95%;
     --destructive: 0 100% 50%;
-    --destructive-foreground: 180 100% 97%;
+    --destructive-foreground: 186 100% 95%;
     --border: 200 40% 20%;
     --input: 200 40% 20%;
     --ring: 186 100% 50%;
@@ -36,13 +36,13 @@
   body {
     @apply bg-neet-background text-neet-text antialiased;
     background-image: radial-gradient(circle at center,
-      rgba(0, 229, 255, 0.1) 0%,
+      rgba(0, 229, 255, 0.15) 0%,
       rgba(0, 28, 44, 0) 70%);
   }
 
   .glass-card {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10 shadow-xl;
-    box-shadow: 0 4px 32px -2px rgba(0, 229, 255, 0.1);
+    @apply bg-white/10 backdrop-blur-lg border border-white/20;
+    box-shadow: 0 4px 32px -2px rgba(0, 229, 255, 0.15);
   }
 
   .gradient-text {

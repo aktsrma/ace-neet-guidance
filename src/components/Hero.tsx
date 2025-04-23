@@ -5,8 +5,8 @@ import LogoGlow from "./LogoGlow";
 
 const Hero = () => {
   return (
-    <section className="relative py-16 md:py-24 bg-gradient-radial from-neet-background via-neet-background/95 to-neet-background/90 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-neet-primary/10 via-transparent to-transparent animate-pulse"></div>
+    <section className="relative py-16 md:py-24 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-radial from-neet-primary/20 via-transparent to-transparent opacity-50"></div>
       <div className="container px-4 md:px-6 relative">
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
           <div className="space-y-4">
@@ -16,14 +16,14 @@ const Hero = () => {
             <h1 className="text-3xl md:text-5xl font-bold font-heading gradient-text animate-shimmer leading-tight">
               Transform Your NEET Preparation with Expert Mentorship
             </h1>
-            <p className="md:text-xl text-neet-lightText/90 font-body animate-fade-in">
+            <p className="md:text-xl text-neet-text font-body animate-fade-in">
               Personalized guidance from top MBBS students who have conquered the NEET exam. Your success, our mission.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link to="/mentorship">
                 <Button 
                   size="lg" 
-                  className="bg-gradient-to-r from-neet-gradient-1 via-neet-gradient-2 to-neet-gradient-3 hover:from-neet-gradient-3 hover:to-neet-gradient-1 transition-all duration-500 font-medium shadow-lg shadow-neet-primary/25 animate-shimmer"
+                  className="bg-gradient-to-r from-neet-gradient-1 via-neet-gradient-2 to-neet-gradient-3 hover:opacity-90 transition-all duration-500 font-medium shadow-lg shadow-neet-primary/25 animate-shimmer"
                 >
                   Explore Mentorship
                 </Button>
@@ -32,7 +32,7 @@ const Hero = () => {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="border-2 border-neet-primary text-neet-primary hover:bg-neet-primary/10 font-medium backdrop-blur-sm hover-scale"
+                  className="border-2 border-neet-primary text-neet-primary hover:bg-neet-primary/10 font-medium backdrop-blur-sm hover:scale-105 transition-all duration-300"
                 >
                   College Counseling
                 </Button>

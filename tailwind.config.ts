@@ -74,6 +74,8 @@ export default {
           'gradient-1': '#00E5FF',
           'gradient-2': '#0288D1',
           'gradient-3': '#01579B',
+          'card-bg': 'rgba(0, 28, 44, 0.8)',
+          'glass': 'rgba(255, 255, 255, 0.1)',
         }
       },
       borderRadius: {
@@ -109,8 +111,8 @@ export default {
           }
         },
         shimmer: {
-          '0%': { backgroundPosition: '200% 0' },
-          '100%': { backgroundPosition: '-200% 0' }
+          '0%': { 'background-position': '200% 0' },
+          '100%': { 'background-position': '-200% 0' }
         },
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
@@ -124,11 +126,10 @@ export default {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        gradient: 'gradient 8s ease infinite',
-        shimmer: 'shimmer 8s linear infinite',
-        float: 'float 6s ease-in-out infinite',
-        glow: 'glow 3s ease-in-out infinite',
-        gradient: 'gradient 8s linear infinite'
+        'gradient': 'gradient 8s linear infinite',
+        'shimmer': 'shimmer 3s linear infinite',
+        'float': 'float 6s ease-in-out infinite',
+        'glow': 'glow 2s ease-in-out infinite',
       },
       fontFamily: {
         heading: ['Poppins', 'sans-serif'],
