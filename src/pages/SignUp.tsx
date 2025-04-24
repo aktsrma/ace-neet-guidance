@@ -179,19 +179,24 @@ const SignUp = () => {
 
                     <FormField
                       control={form.control}
-                      name="study_hours_per_day"
+                      name="preparation_mode"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Study Hours per Day</FormLabel>
-                          <FormControl>
-                            <Input 
-                              type="number" 
-                              min={1} 
-                              max={16} 
-                              {...field}
-                              onChange={e => field.onChange(parseInt(e.target.value))}
-                            />
-                          </FormControl>
+                          <FormLabel>Preparation Mode</FormLabel>
+                          <Select 
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                          >
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select mode" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              <SelectItem value="online">Online</SelectItem>
+                              <SelectItem value="offline">Offline</SelectItem>
+                            </SelectContent>
+                          </Select>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -199,12 +204,12 @@ const SignUp = () => {
 
                     <FormField
                       control={form.control}
-                      name="target_college"
+                      name="institute"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Target College (optional)</FormLabel>
+                          <FormLabel>Institute (if any)</FormLabel>
                           <FormControl>
-                            <Input placeholder="e.g., AIIMS Delhi" {...field} />
+                            <Input placeholder="e.g., Aakash Institute" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
