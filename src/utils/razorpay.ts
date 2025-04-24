@@ -31,9 +31,8 @@ export const initializePayment = async (amount: number, plan: string) => {
       // Call Supabase RPC to store payment
       const { data, error } = await supabase.rpc("create_payment", {
         p_user_id: "user_id_ya_jo_required_ho", // Replace with actual user id
-        p_amount: amount,
-        p_plan: plan,
-        p_payment_id: response.razorpay_payment_id, // Yeh Razorpay ka payment ID hota hai
+        p_program_id: plan, // Using the plan as the program_id 
+        p_amount: amount
       });
 
       if (error) {
