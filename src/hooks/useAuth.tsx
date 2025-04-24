@@ -69,8 +69,8 @@ export const useAuth = () => {
       
       if (signUpError) throw signUpError;
 
-      // Use the RPC function to update the neet profile
-      const { error: profileError } = await supabase.rpc(
+      // Use the RPC function to update the neet profile with a proper type assertion
+      const { error: profileError } = await (supabase.rpc as any)(
         'update_neet_profile',
         {
           p_email: formData.email,
@@ -80,7 +80,7 @@ export const useAuth = () => {
           p_study_hours: formData.study_hours_per_day,
           p_target_college: formData.target_college || '',
           p_weak_subjects: formData.weak_subjects
-        } as any  // Type assertion to bypass TypeScript checking for RPC parameters
+        }
       );
 
       if (profileError) throw profileError;

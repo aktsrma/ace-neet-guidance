@@ -17,14 +17,14 @@ export const usePayment = () => {
 
     setLoading(true);
     try {
-      // Use rpc function with type assertion to handle TypeScript limitations
-      const { data: payment, error: paymentError } = await supabase.rpc(
+      // Use rpc function with proper type assertion
+      const { data: payment, error: paymentError } = await (supabase.rpc as any)(
         'create_payment',
         {
           p_user_id: user.id,
           p_program_id: programId,
           p_amount: amount
-        } as any  // Type assertion to bypass TypeScript checking for RPC parameters
+        }
       );
 
       if (paymentError) throw paymentError;
