@@ -37,17 +37,12 @@ const Navbar = () => {
         
         <div className="flex items-center space-x-4">
           {user ? (
-            <>
-              <Link to="/dashboard">
-                <Button variant="ghost" className="font-medium text-slate-900 hover:text-[#0066cc] hover:bg-blue-50">Dashboard</Button>
-              </Link>
-              <Button 
-                onClick={signOut} 
-                className="bg-[#0066cc] hover:bg-[#0052a3] text-white font-medium shadow-sm"
-              >
-                Sign Out
-              </Button>
-            </>
+            <Button 
+              onClick={signOut} 
+              className="bg-[#0066cc] hover:bg-[#0052a3] text-white font-medium shadow-sm"
+            >
+              Sign Out
+            </Button>
           ) : (
             <>
               <Link to="/login">
