@@ -143,6 +143,16 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      create_payment: {
+        Args: { p_user_id: string; p_program_id: string; p_amount: number }
+        Returns: {
+          id: string
+          user_id: string
+          program_id: string
+          amount: number
+          created_at: string
+        }[]
+      }
       update_neet_profile: {
         Args: {
           p_email: string

@@ -23,23 +23,23 @@ export const initializePayment = async (amount: number, plan: string) => {
     name: "NEET Mentorship",
     description: `${plan} Plan`,
     image: "/logo.svg",
-   handler: async function (response: any) {
-  console.log("Payment successful", response);
+    handler: async function (response: any) {
+      console.log("Payment successful", response);
 
-  // Call Supabase RPC to store payment
-  const { data, error } = await supabase.rpc("create_payment", {
-    p_user_id: "user_id_ya_jo_required_ho", // Replace with actual user id
-    p_amount: amount,
-    p_plan: plan,
-    p_payment_id: response.razorpay_payment_id, // Yeh Razorpay ka payment ID hota hai
-  });
+      // Call Supabase RPC to store payment
+      const { data, error } = await supabase.rpc("create_payment", {
+        p_user_id: "user_id_ya_jo_required_ho", // Replace with actual user id
+        p_amount: amount,
+        p_plan: plan,
+        p_payment_id: response.razorpay_payment_id, // Yeh Razorpay ka payment ID hota hai
+      });
 
-  if (error) {
-    console.error("Supabase error:", error.message);
-  } else {
-    console.log("Payment stored in DB:", data);
-  }
-}
+      if (error) {
+        console.error("Supabase error:", error.message);
+      } else {
+        console.log("Payment stored in DB:", data);
+      }
+    },
     prefill: {
       name: "",
       email: "",
