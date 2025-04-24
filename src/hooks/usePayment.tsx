@@ -17,16 +17,12 @@ export const usePayment = () => {
 
     setLoading(true);
     try {
-      // Create a payment record
-      const { data: payment, error: paymentError } = await supabase
-        .from('payments')
-        .insert({
-          user_id: user.id,
-          program_id: programId,
-          amount: amount,
-        })
-        .select()
-        .single();
+      // Use rpc function instead of direct table access
+      const { data: payment, error: paymentError } = await supabase.rpc('create_payment', {
+        p_user_id: user.id,
+        p_program_id: programId,
+        p_amount: amount
+      });
 
       if (paymentError) throw paymentError;
 

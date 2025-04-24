@@ -19,19 +19,21 @@ const signUpSchema = z.object({
   email: z.string().email("Invalid email address"),
   phone: z.string().min(10, "Phone number must be at least 10 digits"),
   password: z.string().min(8, "Password must be at least 8 characters"),
-  target_year: z.number().min(2024).max(2026),
-  previous_score: z.number().optional(),
-  study_hours_per_day: z.number().min(1).max(16),
+  target_year: z.coerce.number().min(2024).max(2026),
+  previous_score: z.coerce.number().optional(),
+  study_hours_per_day: z.coerce.number().min(1).max(16),
   target_college: z.string().optional(),
-  weak_subjects: z.array(z.string()),
+  weak_subjects: z.array(z.string()).default([]),
   terms: z.boolean().refine(val => val === true, "You must accept the terms and conditions")
 });
+
+type SignUpFormValues = z.infer<typeof signUpSchema>;
 
 const SignUp = () => {
   const { signUp } = useAuth();
   const [loading, setLoading] = useState(false);
 
-  const form = useForm<z.infer<typeof signUpSchema>>({
+  const form = useForm<SignUpFormValues>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
       weak_subjects: [],
@@ -39,10 +41,21 @@ const SignUp = () => {
     },
   });
 
-  const onSubmit = async (data: z.infer<typeof signUpSchema>) => {
+  const onSubmit = async (data: SignUpFormValues) => {
     setLoading(true);
     try {
-      await signUp(data);
+      // Explicitly cast the form data to match the expected type for signUp
+      await signUp({
+        email: data.email,
+        password: data.password,
+        full_name: data.full_name,
+        phone: data.phone,
+        target_year: data.target_year,
+        previous_score: data.previous_score,
+        study_hours_per_day: data.study_hours_per_day,
+        target_college: data.target_college,
+        weak_subjects: data.weak_subjects,
+      });
     } finally {
       setLoading(false);
     }

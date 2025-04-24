@@ -69,17 +69,17 @@ export const useAuth = () => {
       
       if (signUpError) throw signUpError;
 
-      const { error: profileError } = await supabase
-        .from('neet_profiles')
-        .update({
-          phone: formData.phone,
-          target_year: formData.target_year,
-          previous_score: formData.previous_score,
-          study_hours_per_day: formData.study_hours_per_day,
-          target_college: formData.target_college,
-          weak_subjects: formData.weak_subjects,
-        })
-        .eq('email', formData.email);
+      // Since we can't directly access neet_profiles table due to type constraints,
+      // we'll use a more generic approach with the rpc function
+      const { error: profileError } = await supabase.rpc('update_neet_profile', {
+        p_email: formData.email,
+        p_phone: formData.phone,
+        p_target_year: formData.target_year,
+        p_previous_score: formData.previous_score,
+        p_study_hours: formData.study_hours_per_day,
+        p_target_college: formData.target_college,
+        p_weak_subjects: formData.weak_subjects
+      });
 
       if (profileError) throw profileError;
 
