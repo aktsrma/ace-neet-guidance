@@ -52,8 +52,8 @@ export const useAuth = () => {
     phone: string;
     target_year: number;
     previous_score?: number;
-    study_hours_per_day: number;
-    target_college?: string;
+    preparation_mode: 'online' | 'offline';
+    institute?: string;
     weak_subjects: string[];
   }) => {
     try {
@@ -69,7 +69,7 @@ export const useAuth = () => {
       
       if (signUpError) throw signUpError;
 
-      // Use the RPC function to update the neet profile with a proper type assertion
+      // Use the RPC function to update the neet profile with proper parameters
       const { error: profileError } = await (supabase.rpc as any)(
         'update_neet_profile',
         {
@@ -77,8 +77,8 @@ export const useAuth = () => {
           p_phone: formData.phone,
           p_target_year: formData.target_year,
           p_previous_score: formData.previous_score || null,
-          p_study_hours: formData.study_hours_per_day,
-          p_target_college: formData.target_college || '',
+          p_preparation_mode: formData.preparation_mode,
+          p_institute: formData.institute || '',
           p_weak_subjects: formData.weak_subjects
         }
       );

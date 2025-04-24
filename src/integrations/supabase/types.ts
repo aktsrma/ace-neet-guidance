@@ -75,6 +75,42 @@ export type Database = {
         }
         Relationships: []
       }
+      neet_profiles: {
+        Row: {
+          created_at: string | null
+          email: string
+          institute: string | null
+          phone: string | null
+          preparation_mode: string | null
+          previous_score: number | null
+          target_year: number | null
+          updated_at: string | null
+          weak_subjects: string[] | null
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          institute?: string | null
+          phone?: string | null
+          preparation_mode?: string | null
+          previous_score?: number | null
+          target_year?: number | null
+          updated_at?: string | null
+          weak_subjects?: string[] | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          institute?: string | null
+          phone?: string | null
+          preparation_mode?: string | null
+          previous_score?: number | null
+          target_year?: number | null
+          updated_at?: string | null
+          weak_subjects?: string[] | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string | null
@@ -107,7 +143,18 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      update_neet_profile: {
+        Args: {
+          p_email: string
+          p_phone: string
+          p_target_year: number
+          p_previous_score: number
+          p_preparation_mode: string
+          p_institute: string
+          p_weak_subjects: string[]
+        }
+        Returns: undefined
+      }
     }
     Enums: {
       subscription_status: "active" | "inactive" | "pending"
