@@ -21,8 +21,8 @@ const signUpSchema = z.object({
   password: z.string().min(8, "Password must be at least 8 characters"),
   target_year: z.coerce.number().min(2024).max(2026),
   previous_score: z.coerce.number().optional(),
-  study_hours_per_day: z.coerce.number().min(1).max(16),
-  target_college: z.string().optional(),
+  preparation_mode: z.enum(["online", "offline"]).default("online"),
+  institute: z.string().optional(),
   weak_subjects: z.array(z.string()).default([]),
   terms: z.boolean().refine(val => val === true, "You must accept the terms and conditions")
 });
@@ -37,7 +37,7 @@ const SignUp = () => {
     resolver: zodResolver(signUpSchema),
     defaultValues: {
       weak_subjects: [],
-      study_hours_per_day: 4,
+      preparation_mode: "online",
     },
   });
 
@@ -52,8 +52,8 @@ const SignUp = () => {
         phone: data.phone,
         target_year: data.target_year,
         previous_score: data.previous_score,
-        study_hours_per_day: data.study_hours_per_day,
-        target_college: data.target_college,
+        preparation_mode: data.preparation_mode,
+        institute: data.institute,
         weak_subjects: data.weak_subjects,
       });
     } finally {
