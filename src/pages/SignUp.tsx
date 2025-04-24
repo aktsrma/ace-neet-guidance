@@ -44,7 +44,7 @@ const SignUp = () => {
   const onSubmit = async (data: SignUpFormValues) => {
     setLoading(true);
     try {
-      // Explicitly cast the form data to match the expected type for signUp
+      // Extract all required fields explicitly
       await signUp({
         email: data.email,
         password: data.password,
