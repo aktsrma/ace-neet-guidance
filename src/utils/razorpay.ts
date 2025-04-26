@@ -25,7 +25,7 @@ export const initializePayment = async (amount: number, plan: string, userDetail
 }) => {
   try {
     // First create a pending payment record
-    const { data: payment, error: paymentError } = await supabase.rpc('create_payment', {
+    const { data: paymentData, error: paymentError } = await supabase.rpc('create_payment', {
       p_user_id: userDetails.id,
       p_program_id: plan,
       p_amount: amount
@@ -36,6 +36,16 @@ export const initializePayment = async (amount: number, plan: string, userDetail
       toast.error('Failed to initialize payment');
       return;
     }
+
+    // Type assertion to handle the payment data correctly
+    const payment = paymentData as {
+      id: string;
+      user_id: string;
+      program_id: string;
+      amount: number;
+      status: string;
+      created_at: string;
+    };
 
     // Load Razorpay script
     await loadRazorpayScript();

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { initializePayment } from "@/utils/razorpay";
 import { toast } from "sonner";
 import { useAuth } from './useAuth';
+import { supabase } from "@/integrations/supabase/client";
 
 export const usePayment = () => {
   const [loading, setLoading] = useState(false);

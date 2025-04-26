@@ -5,15 +5,18 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { initializePayment } from "@/utils/razorpay";
-import { toast } from "@/components/ui/sonner";
+import { toast } from "sonner";
+import { usePayment } from "@/hooks/usePayment";
+import { useAuth } from "@/hooks/useAuth";
 
 const Mentorship = () => {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const { handlePayment, loading } = usePayment();
+  const { user } = useAuth();
 
-  const handlePayment = async (amount: number, plan: string) => {
+  const handlePaymentClick = async (amount: number, plan: string) => {
     try {
-      await initializePayment(amount, plan);
+      await handlePayment(plan, amount);
     } catch (error) {
       toast.error("Payment initialization failed. Please try again.");
     }
@@ -185,9 +188,10 @@ const Mentorship = () => {
                 <CardFooter>
                   <Button 
                     className="w-full bg-gradient-to-r from-neet-primary to-neet-secondary hover:opacity-90 transition-opacity"
-                    onClick={() => handlePayment(199, "One-Time Call")}
+                    onClick={() => handlePaymentClick(199, "One-Time Call")}
+                    disabled={loading}
                   >
-                    Book Now - ₹199
+                    {loading ? "Processing..." : "Book Now - ₹199"}
                   </Button>
                 </CardFooter>
               </Card>
@@ -304,9 +308,10 @@ const Mentorship = () => {
                 <CardFooter>
                   <Button 
                     className="w-full bg-gradient-to-r from-neet-primary to-neet-secondary hover:opacity-90 transition-opacity"
-                    onClick={() => handlePayment(1999, "One-Year Mentorship")}
+                    onClick={() => handlePaymentClick(1999, "One-Year Mentorship")}
+                    disabled={loading}
                   >
-                    Enroll Now - ₹1999
+                    {loading ? "Processing..." : "Enroll Now - ₹1999"}
                   </Button>
                 </CardFooter>
               </Card>
