@@ -40,7 +40,7 @@ export const useAuth = () => {
       });
       if (error) throw error;
       
-      navigate("/dashboard");
+      navigate("/");
       toast.success("Successfully signed in!");
     } catch (error: any) {
       toast.error(error.message || "Failed to sign in");
