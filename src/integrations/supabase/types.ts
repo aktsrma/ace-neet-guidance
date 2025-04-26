@@ -111,6 +111,42 @@ export type Database = {
         }
         Relationships: []
       }
+      payments: {
+        Row: {
+          amount: number
+          created_at: string
+          id: string
+          program_id: string
+          razorpay_order_id: string | null
+          razorpay_payment_id: string | null
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          id?: string
+          program_id: string
+          razorpay_order_id?: string | null
+          razorpay_payment_id?: string | null
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          id?: string
+          program_id?: string
+          razorpay_order_id?: string | null
+          razorpay_payment_id?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string | null
@@ -144,14 +180,10 @@ export type Database = {
     }
     Functions: {
       create_payment: {
-        Args: { p_user_id: string; p_program_id: string; p_amount: number }
-        Returns: {
-          id: string
-          user_id: string
-          program_id: string
-          amount: number
-          created_at: string
-        }[]
+        Args:
+          | { p_user_id: string; p_program_id: string; p_amount: number }
+          | { p_user_id: string; p_program_id: string; p_amount: number }
+        Returns: Json
       }
       update_neet_profile: {
         Args: {
@@ -164,6 +196,15 @@ export type Database = {
           p_weak_subjects: string[]
         }
         Returns: undefined
+      }
+      update_payment_status: {
+        Args: {
+          p_payment_id: string
+          p_razorpay_payment_id: string
+          p_razorpay_order_id: string
+          p_status: string
+        }
+        Returns: Json
       }
     }
     Enums: {

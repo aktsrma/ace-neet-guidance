@@ -1,6 +1,5 @@
 
 import { useState } from 'react';
-import { supabase } from "@/integrations/supabase/client";
 import { initializePayment } from "@/utils/razorpay";
 import { toast } from "sonner";
 import { useAuth } from './useAuth';
@@ -17,23 +16,24 @@ export const usePayment = () => {
 
     setLoading(true);
     try {
-      // Use rpc function with proper type assertion
-      const { data: payment, error: paymentError } = await (supabase.rpc as any)(
-        'create_payment',
+      // Get user profile details for Razorpay prefill
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('full_name, phone')
+        .eq('id', user.id)
+        .single();
+
+      await initializePayment(
+        amount,
+        programId,
         {
-          p_user_id: user.id,
-          p_program_id: programId,
-          p_amount: amount
+          id: user.id,
+          email: user.email,
+          name: profile?.full_name,
+          phone: profile?.phone
         }
       );
-
-      if (paymentError) throw paymentError;
-
-      // Initialize Razorpay payment
-      await initializePayment(amount, `Program-${programId}`);
-      
-      toast.success("Payment initiated successfully");
-    } catch (error) {
+    } catch (error: any) {
       toast.error("Payment initialization failed: " + error.message);
     } finally {
       setLoading(false);
