@@ -8,11 +8,13 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { toast } from "sonner";
 import { usePayment } from "@/hooks/usePayment";
 import { useAuth } from "@/hooks/useAuth";
+import { useMentorshipPrograms } from "@/hooks/useMentorshipPrograms";
 
 const Mentorship = () => {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const { handlePayment, loading } = usePayment();
   const { user } = useAuth();
+  const { data: programs, isLoading: programsLoading } = useMentorshipPrograms();
 
   const handlePaymentClick = async (amount: number, plan: string) => {
     try {
@@ -80,12 +82,6 @@ const Mentorship = () => {
     }
   ];
 
-  const handleSelectPlan = (plan: string) => {
-    setSelectedPlan(plan);
-    // In a real implementation, this would redirect to login/signup
-    // or directly to payment if the user is already authenticated
-  };
-
   return (
     <div className="min-h-screen bg-neet-background font-body">
       <Navbar />
@@ -112,210 +108,44 @@ const Mentorship = () => {
           </TabsList>
           
           <TabsContent value="plans">
-            <div className="grid md:grid-cols-2 gap-8">
-              <Card className="border border-neet-primary/20 bg-gradient-to-b from-transparent to-neet-accent/5 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="text-xl font-heading text-neet-text">One-Time Mentorship Call</CardTitle>
-                  <CardDescription>Perfect for specific doubts and questions</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <p className="text-2xl font-bold text-neet-primary">₹199</p>
-                    <ul className="space-y-2">
-                      <li className="flex items-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5 text-neet-secondary mr-2"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        <span className="text-neet-lightText">30-minute video call session</span>
-                      </li>
-                      <li className="flex items-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5 text-neet-secondary mr-2"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        <span className="text-neet-lightText">Expert guidance on specific topics</span>
-                      </li>
-                      <li className="flex items-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5 text-neet-secondary mr-2"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        <span className="text-neet-lightText">Flexible scheduling</span>
-                      </li>
-                      <li className="flex items-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5 text-neet-secondary mr-2"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        <span className="text-neet-lightText">Choose your preferred mentor</span>
-                      </li>
-                    </ul>
-                  </div>
-                </CardContent>
-                <CardFooter>
-                  <Button 
-                    className="w-full bg-gradient-to-r from-neet-primary to-neet-secondary hover:opacity-90 transition-opacity"
-                    onClick={() => handlePaymentClick(199, "One-Time Call")}
-                    disabled={loading}
-                  >
-                    {loading ? "Processing..." : "Book Now - ₹199"}
-                  </Button>
-                </CardFooter>
-              </Card>
-              
-              <Card className="border-2 border-neet-primary shadow-lg bg-gradient-to-b from-transparent to-neet-accent/10 backdrop-blur-sm">
-                <CardHeader>
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <CardTitle className="text-xl font-heading text-neet-text">One-Year Mentorship</CardTitle>
-                      <CardDescription>Comprehensive support for your NEET journey</CardDescription>
-                    </div>
-                    <span className="inline-block bg-gradient-to-r from-neet-primary to-neet-secondary text-white text-xs px-2 py-1 rounded-full font-medium">
-                      Most Popular
-                    </span>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <p className="text-2xl font-bold text-neet-primary">₹1999</p>
-                    <ul className="space-y-2">
-                      <li className="flex items-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5 text-neet-secondary mr-2"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        <span className="text-neet-lightText">Monthly one-on-one mentorship sessions</span>
-                      </li>
-                      <li className="flex items-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5 text-neet-secondary mr-2"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        <span className="text-neet-lightText">Personalized study plan</span>
-                      </li>
-                      <li className="flex items-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5 text-neet-secondary mr-2"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        <span className="text-neet-lightText">Performance tracking & analysis</span>
-                      </li>
-                      <li className="flex items-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5 text-neet-secondary mr-2"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        <span className="text-neet-lightText">Mock test reviews</span>
-                      </li>
-                      <li className="flex items-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5 text-neet-secondary mr-2"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        <span className="text-neet-lightText">24/7 doubt solving support</span>
-                      </li>
-                      <li className="flex items-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5 text-neet-secondary mr-2"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        <span className="text-neet-lightText">Study resource recommendations</span>
-                      </li>
-                    </ul>
-                  </div>
-                </CardContent>
-                <CardFooter>
-                  <Button 
-                    className="w-full bg-gradient-to-r from-neet-primary to-neet-secondary hover:opacity-90 transition-opacity"
-                    onClick={() => handlePaymentClick(1999, "One-Year Mentorship")}
-                    disabled={loading}
-                  >
-                    {loading ? "Processing..." : "Enroll Now - ₹1999"}
-                  </Button>
-                </CardFooter>
-              </Card>
-            </div>
+            {programsLoading ? (
+              <div className="text-center py-8">Loading plans...</div>
+            ) : (
+              <div className="grid md:grid-cols-2 gap-8">
+                {programs?.map((program) => (
+                  <Card key={program.id} className={`border ${program.title === 'One-Year Mentorship' ? 'border-2 border-neet-primary shadow-lg bg-gradient-to-b from-transparent to-neet-accent/10' : 'border-neet-primary/20 bg-gradient-to-b from-transparent to-neet-accent/5'} backdrop-blur-sm`}>
+                    <CardHeader>
+                      <div className="flex justify-between items-center">
+                        <div>
+                          <CardTitle className="text-xl font-heading text-neet-text">{program.title}</CardTitle>
+                          <CardDescription>{program.description}</CardDescription>
+                        </div>
+                        {program.title === 'One-Year Mentorship' && (
+                          <span className="inline-block bg-gradient-to-r from-neet-primary to-neet-secondary text-white text-xs px-2 py-1 rounded-full font-medium">
+                            Most Popular
+                          </span>
+                        )}
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-4">
+                        <p className="text-2xl font-bold text-neet-primary">₹{program.price}</p>
+                        <p className="text-neet-lightText">Duration: {program.duration}</p>
+                      </div>
+                    </CardContent>
+                    <CardFooter>
+                      <Button 
+                        className="w-full bg-gradient-to-r from-neet-primary to-neet-secondary hover:opacity-90 transition-opacity"
+                        onClick={() => handlePaymentClick(program.price, program.title)}
+                        disabled={loading}
+                      >
+                        {loading ? "Processing..." : `${program.title === 'One-Time Call' ? 'Book Now' : 'Enroll Now'} - ₹${program.price}`}
+                      </Button>
+                    </CardFooter>
+                  </Card>
+                ))}
+              </div>
+            )}
           </TabsContent>
           
           <TabsContent value="mentors">
