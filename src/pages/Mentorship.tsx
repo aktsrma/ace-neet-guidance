@@ -30,28 +30,28 @@ const Mentorship = () => {
       college: "3rd Year MBBS Student",
       specialization: "NEET Preparation Strategy",
       rank: "Rising Talent",
-      image: "https://images.unsplash.com/photo-1487252665478-49b61b47f302"
+      description: "Excelled in NEET with AIR under 500. Specializes in helping students master Biology and Chemistry concepts through innovative learning techniques."
     },
     {
       name: "Dr. Rohit Bajar",
       college: "Intern at KG Medical University",
       specialization: "NEET Clinical Insights",
       rank: "Emerging Medical Professional",
-      image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742"
+      description: "Former NEET top performer with extensive experience in guiding students through complex medical concepts and exam strategies."
     },
     {
       name: "Dr. Sunil Sharma",
       college: "Intern at AIIMS Raebareli",
       specialization: "Comprehensive NEET Guidance",
       rank: "Promising Young Physician",
-      image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625"
+      description: "AIIMS graduate with deep understanding of NEET curriculum. Expert in providing structured study plans and time management strategies."
     },
     {
       name: "Dishant Jain",
       college: "4th Year MBBS Student",
       specialization: "NEET Exam Strategies",
       rank: "Aspiring Medical Professional",
-      image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f"
+      description: "Achieved exceptional NEET score and passionate about helping students overcome exam challenges through proven study methodologies."
     }
   ];
 
@@ -151,19 +151,13 @@ const Mentorship = () => {
           <TabsContent value="mentors">
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {mentors.map((mentor) => (
-                <Card key={mentor.name} className="border border-gray-200 overflow-hidden">
-                  <div className="aspect-[3/2] relative">
-                    <img 
-                      src={mentor.image} 
-                      alt={mentor.name} 
-                      className="object-cover w-full h-full"
-                    />
-                  </div>
+                <Card key={mentor.name} className="border border-gray-200">
                   <CardContent className="pt-6">
                     <h3 className="font-heading font-semibold text-lg text-neet-text">{mentor.name}</h3>
                     <p className="text-neet-secondary font-medium text-sm">{mentor.college}</p>
-                    <p className="text-neet-lightText text-sm mt-2">{mentor.specialization}</p>
-                    <p className="text-neet-primary text-sm font-medium mt-1">{mentor.rank}</p>
+                    <p className="text-neet-primary text-sm mt-2">{mentor.specialization}</p>
+                    <p className="text-neet-text text-sm mt-2">{mentor.description}</p>
+                    <p className="text-neet-primary text-sm font-medium mt-3">{mentor.rank}</p>
                   </CardContent>
                 </Card>
               ))}
