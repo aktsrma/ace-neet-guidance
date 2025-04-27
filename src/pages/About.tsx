@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,53 +8,53 @@ const About = () => {
       name: "Dr. Rajiv Mehta",
       role: "Founder & Chief Mentor",
       image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=1470&auto=format&fit=crop",
-      bio: "AIIMS graduate with 10+ years of experience in medical education and mentorship."
+      bio: "A dedicated medical educator with over a decade of experience, Dr. Mehta understands the challenges NEET aspirants face. His passion stems from helping students overcome the complex journey of medical entrance exams."
     },
     {
       name: "Dr. Priya Sharma",
       role: "Head of Mentorship",
       image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=1470&auto=format&fit=crop",
-      bio: "Former NEET topper with expertise in developing personalized study strategies for aspirants."
+      bio: "Having navigated the competitive NEET landscape herself, Priya brings practical insights and empathetic guidance. She specializes in developing personalized strategies that address individual student's unique learning needs."
     },
     {
       name: "Dr. Aditya Singh",
       role: "College Counseling Expert",
       image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1364&auto=format&fit=crop",
-      bio: "Specialized in medical college admissions with deep knowledge of the counseling process."
+      bio: "With comprehensive knowledge of medical college admissions, Aditya helps students make informed decisions. He understands that success is not just about scoring well, but also about finding the right educational path."
     },
     {
       name: "Ms. Sneha Patel",
       role: "Operations Manager",
       image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1376&auto=format&fit=crop",
-      bio: "Ensures smooth functioning of all mentorship programs and excellent service delivery."
+      bio: "The backbone of NEET Ace Mentor, Sneha ensures smooth program delivery and student support. Her meticulous approach guarantees that every student receives high-quality, consistent mentorship."
     }
   ];
 
   const milestones = [
     {
       year: "2021",
-      title: "Foundation",
-      description: "NEET Ace Mentor was founded with a mission to provide quality mentorship to medical aspirants."
+      title: "Grassroots Beginning",
+      description: "Founded after recognizing the overwhelming challenges NEET aspirants face. Started with a small group of 10 students in a modest coaching center in Delhi."
     },
     {
       year: "2022",
-      title: "First Success Batch",
-      description: "Our first batch of mentees achieved remarkable success with 85% securing seats in government medical colleges."
+      title: "First Success Wave",
+      description: "Our initial batch proved our approach works. 85% of our students secured government medical college seats, validating our personalized mentorship model."
     },
     {
       year: "2023",
-      title: "Expanded Services",
-      description: "Launched college counseling services and expanded our mentor network to cover all medical specialties."
+      title: "Expanding Horizons",
+      description: "Launched online mentorship to reach students in smaller towns and rural areas. Recognized that quality guidance should not be limited by geographical constraints."
     },
     {
       year: "2024",
       title: "Digital Transformation",
-      description: "Introduced our online platform to reach students across India with personalized mentorship services."
+      description: "Developed a comprehensive online platform with interactive study modules, live doubt-clearing sessions, and AI-powered performance tracking."
     },
     {
       year: "2025",
-      title: "Growing Community",
-      description: "Currently serving thousands of NEET aspirants with a team of 50+ expert mentors from premier institutions."
+      title: "National Impact",
+      description: "Serving over 2,000 students annually across 15 states. Our mentor network has grown to 50+ professionals from top medical institutions."
     }
   ];
 
@@ -66,8 +65,8 @@ const About = () => {
       <div className="py-12 bg-neet-background">
         <div className="container px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-3xl md:text-5xl font-bold font-heading text-neet-text mb-4">About NEET Ace Mentor</h1>
-            <p className="text-lg text-neet-lightText">Empowering medical aspirants to achieve their dreams</p>
+            <h1 className="text-3xl md:text-5xl font-bold font-heading text-neet-text mb-4">Our Story: Beyond Just Mentorship</h1>
+            <p className="text-lg text-neet-lightText">A journey of transforming medical education, one student at a time</p>
           </div>
         </div>
       </div>
@@ -82,17 +81,17 @@ const About = () => {
             />
           </div>
           <div className="space-y-6">
-            <h2 className="text-2xl md:text-4xl font-bold font-heading text-neet-text">Our Mission</h2>
+            <h2 className="text-2xl md:text-4xl font-bold font-heading text-neet-text">Why We Exist</h2>
             <p className="text-neet-lightText">
-              At NEET Ace Mentor, we believe that every medical aspirant deserves personalized guidance from those who have already walked the path. Our mission is to democratize access to quality mentorship and make the journey to medical college less daunting and more structured.
+              NEET Ace Mentor emerged from a simple yet profound realization: medical entrance exam preparation is more than just studying. It's about understanding individual potential, managing stress, and providing holistic guidance.
             </p>
             <p className="text-neet-lightText">
-              We bridge the gap between aspiration and achievement by connecting NEET candidates with successful medical students who provide real-world insights, proven study strategies, and emotional support throughout the preparation journey.
+              We're not just another coaching institute. We're a support system that recognizes each student's unique journey, challenges, and aspirations. Our mentors have walked the same path and understand the emotional and academic complexities of becoming a medical professional.
             </p>
             <div className="grid grid-cols-2 gap-4 pt-4">
               <div className="p-4 bg-neet-background rounded-lg text-center">
-                <p className="text-3xl font-bold text-neet-primary mb-2">1500+</p>
-                <p className="text-neet-lightText text-sm">Students Mentored</p>
+                <p className="text-3xl font-bold text-neet-primary mb-2">2000+</p>
+                <p className="text-neet-lightText text-sm">Students Guided</p>
               </div>
               <div className="p-4 bg-neet-background rounded-lg text-center">
                 <p className="text-3xl font-bold text-neet-primary mb-2">85%</p>
@@ -103,8 +102,8 @@ const About = () => {
                 <p className="text-neet-lightText text-sm">Expert Mentors</p>
               </div>
               <div className="p-4 bg-neet-background rounded-lg text-center">
-                <p className="text-3xl font-bold text-neet-primary mb-2">20+</p>
-                <p className="text-neet-lightText text-sm">Medical Colleges</p>
+                <p className="text-3xl font-bold text-neet-primary mb-2">15+</p>
+                <p className="text-neet-lightText text-sm">States Served</p>
               </div>
             </div>
           </div>
@@ -116,16 +115,13 @@ const About = () => {
             <p className="text-neet-lightText">The evolution of NEET Ace Mentor</p>
           </div>
           <div className="relative">
-            {/* Timeline line */}
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-neet-background"></div>
             
             <div className="space-y-12">
               {milestones.map((milestone, index) => (
                 <div key={index} className={`relative flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'} md:justify-between`}>
-                  {/* Timeline dot */}
                   <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full border-4 border-neet-background bg-neet-primary"></div>
                   
-                  {/* Content */}
                   <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8 text-right' : 'md:pl-8 text-left'}`}>
                     <div className="p-6 bg-white shadow-md rounded-lg">
                       <span className="inline-block px-3 py-1 bg-neet-background text-neet-primary text-sm font-medium rounded-full mb-2">
