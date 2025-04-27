@@ -5,18 +5,27 @@ import { Tables } from "@/integrations/supabase/types";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BlogCard from "@/components/blog/BlogCard";
+import CategoryFilter from "@/components/blog/CategoryFilter";
+import { type Category } from "@/constants/blogCategories";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState<Tables<"blogs">[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const { data, error } = await supabase
+        const query = supabase
           .from("blogs")
           .select("*")
           .order("created_at", { ascending: false });
+
+        if (selectedCategory) {
+          query.contains('tags', [selectedCategory]);
+        }
+
+        const { data, error } = await query;
 
         if (error) throw error;
         setBlogs(data || []);
@@ -28,7 +37,7 @@ const Blog = () => {
     };
 
     fetchBlogs();
-  }, []);
+  }, [selectedCategory]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -37,6 +46,11 @@ const Blog = () => {
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-5xl mx-auto">
           <h1 className="text-4xl font-bold mb-8">NEET Preparation Blog</h1>
+          
+          <CategoryFilter 
+            selectedCategory={selectedCategory} 
+            onSelectCategory={setSelectedCategory} 
+          />
           
           {loading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

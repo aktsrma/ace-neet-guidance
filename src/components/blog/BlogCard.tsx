@@ -1,6 +1,7 @@
 
 import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Tables } from "@/integrations/supabase/types";
 
 interface BlogCardProps {
@@ -29,14 +30,14 @@ const BlogCard = ({ blog }: BlogCardProps) => {
       <CardContent>
         <p className="text-muted-foreground line-clamp-3">{blog.excerpt}</p>
         <div className="mt-4 flex items-center justify-between text-sm">
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             {blog.tags?.map((tag) => (
-              <span key={tag} className="bg-blue-100 text-blue-800 px-2 py-1 rounded">
+              <Badge key={tag} variant="secondary">
                 {tag}
-              </span>
+              </Badge>
             ))}
           </div>
-          <time className="text-muted-foreground">
+          <time className="text-muted-foreground whitespace-nowrap ml-4">
             {new Date(blog.created_at).toLocaleDateString()}
           </time>
         </div>
