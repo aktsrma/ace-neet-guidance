@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import BlogCard from "@/components/blog/BlogCard";
 import CategoryFilter from "@/components/blog/CategoryFilter";
 import { type Category } from "@/constants/blogCategories";
+import { toast } from "@/components/ui/use-toast";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState<Tables<"blogs">[]>([]);
@@ -16,6 +17,7 @@ const Blog = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
+        setLoading(true);
         let query = supabase
           .from("blogs")
           .select("*")
@@ -27,7 +29,17 @@ const Blog = () => {
 
         const { data, error } = await query;
 
-        if (error) throw error;
+        if (error) {
+          console.error("Error fetching blogs:", error);
+          toast({
+            title: "Error",
+            description: "Failed to load blog posts. Please try again later.",
+            variant: "destructive",
+          });
+          throw error;
+        }
+        
+        console.log("Fetched blogs:", data);
         setBlogs(data || []);
       } catch (error) {
         console.error("Error fetching blogs:", error);
@@ -62,11 +74,20 @@ const Blog = () => {
                 <div key={n} className="h-[300px] bg-muted animate-pulse rounded-lg" />
               ))}
             </div>
-          ) : (
+          ) : blogs.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {blogs.map((blog) => (
                 <BlogCard key={blog.id} blog={blog} />
               ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <h2 className="text-2xl font-semibold text-gray-700">No blog posts found</h2>
+              <p className="text-muted-foreground mt-2">
+                {selectedCategory 
+                  ? `No posts found in the "${selectedCategory}" category.` 
+                  : "There are currently no blog posts available."}
+              </p>
             </div>
           )}
         </div>
