@@ -26,32 +26,32 @@ const Mentorship = () => {
 
   const mentors = [
     {
-      name: "Dr. Ananya Sharma",
-      college: "AIIMS New Delhi",
-      specialization: "NEET Physics Expert",
-      rank: "AIR 18 in NEET",
+      name: "Ankit Sharma",
+      college: "3rd Year MBBS Student",
+      specialization: "NEET Preparation Strategy",
+      rank: "Rising Talent",
+      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=1480&auto=format&fit=crop"
+    },
+    {
+      name: "Dr. Rohit Bajar",
+      college: "Intern at KG Medical University",
+      specialization: "NEET Clinical Insights",
+      rank: "Emerging Medical Professional",
       image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=1470&auto=format&fit=crop"
     },
     {
-      name: "Dr. Vikram Mehta",
-      college: "JIPMER Puducherry",
-      specialization: "NEET Chemistry Expert",
-      rank: "AIR 56 in NEET",
-      image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1364&auto=format&fit=crop"
-    },
-    {
-      name: "Dr. Priya Desai",
-      college: "King George's Medical University",
-      specialization: "NEET Biology Expert",
-      rank: "AIR 122 in NEET",
-      image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=1470&auto=format&fit=crop"
-    },
-    {
-      name: "Dr. Arjun Reddy",
-      college: "Maulana Azad Medical College",
-      specialization: "Overall NEET Strategy",
-      rank: "AIR 75 in NEET",
+      name: "Dr. Sunil Sharma",
+      college: "Intern at AIIMS Raebareli",
+      specialization: "Comprehensive NEET Guidance",
+      rank: "Promising Young Physician",
       image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=1470&auto=format&fit=crop"
+    },
+    {
+      name: "Dishant Jain",
+      college: "4th Year MBBS Student",
+      specialization: "NEET Exam Strategies",
+      rank: "Aspiring Medical Professional",
+      image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=1470&auto=format&fit=crop"
     }
   ];
 
