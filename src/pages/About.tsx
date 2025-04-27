@@ -1,63 +1,9 @@
+
+import React from 'react';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Card, CardContent } from "@/components/ui/card";
 
 const About = () => {
-  const team = [
-    {
-      name: "Dr. Rajiv Mehta",
-      role: "Founder & Chief Mentor",
-      image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=1470&auto=format&fit=crop",
-      bio: "A dedicated medical educator with over a decade of experience, Dr. Mehta understands the challenges NEET aspirants face. His passion stems from helping students overcome the complex journey of medical entrance exams."
-    },
-    {
-      name: "Dr. Priya Sharma",
-      role: "Head of Mentorship",
-      image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=1470&auto=format&fit=crop",
-      bio: "Having navigated the competitive NEET landscape herself, Priya brings practical insights and empathetic guidance. She specializes in developing personalized strategies that address individual student's unique learning needs."
-    },
-    {
-      name: "Dr. Aditya Singh",
-      role: "College Counseling Expert",
-      image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1364&auto=format&fit=crop",
-      bio: "With comprehensive knowledge of medical college admissions, Aditya helps students make informed decisions. He understands that success is not just about scoring well, but also about finding the right educational path."
-    },
-    {
-      name: "Ms. Sneha Patel",
-      role: "Operations Manager",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1376&auto=format&fit=crop",
-      bio: "The backbone of NEET Ace Mentor, Sneha ensures smooth program delivery and student support. Her meticulous approach guarantees that every student receives high-quality, consistent mentorship."
-    }
-  ];
-
-  const milestones = [
-    {
-      year: "2021",
-      title: "Grassroots Beginning",
-      description: "Founded after recognizing the overwhelming challenges NEET aspirants face. Started with a small group of 10 students in a modest coaching center in Delhi."
-    },
-    {
-      year: "2022",
-      title: "First Success Wave",
-      description: "Our initial batch proved our approach works. 85% of our students secured government medical college seats, validating our personalized mentorship model."
-    },
-    {
-      year: "2023",
-      title: "Expanding Horizons",
-      description: "Launched online mentorship to reach students in smaller towns and rural areas. Recognized that quality guidance should not be limited by geographical constraints."
-    },
-    {
-      year: "2024",
-      title: "Digital Transformation",
-      description: "Developed a comprehensive online platform with interactive study modules, live doubt-clearing sessions, and AI-powered performance tracking."
-    },
-    {
-      year: "2025",
-      title: "National Impact",
-      description: "Serving over 2,000 students annually across 15 states. Our mentor network has grown to 50+ professionals from top medical institutions."
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-white font-body">
       <Navbar />
@@ -106,59 +52,6 @@ const About = () => {
                 <p className="text-neet-lightText text-sm">States Served</p>
               </div>
             </div>
-          </div>
-        </div>
-        
-        <div className="mb-16">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-2xl md:text-4xl font-bold font-heading text-neet-text mb-4">Our Journey</h2>
-            <p className="text-neet-lightText">The evolution of NEET Ace Mentor</p>
-          </div>
-          <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-neet-background"></div>
-            
-            <div className="space-y-12">
-              {milestones.map((milestone, index) => (
-                <div key={index} className={`relative flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'} md:justify-between`}>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full border-4 border-neet-background bg-neet-primary"></div>
-                  
-                  <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8 text-right' : 'md:pl-8 text-left'}`}>
-                    <div className="p-6 bg-white shadow-md rounded-lg">
-                      <span className="inline-block px-3 py-1 bg-neet-background text-neet-primary text-sm font-medium rounded-full mb-2">
-                        {milestone.year}
-                      </span>
-                      <h3 className="text-lg font-heading font-semibold text-neet-text mb-2">{milestone.title}</h3>
-                      <p className="text-neet-lightText text-sm">{milestone.description}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        
-        <div className="mb-16">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-2xl md:text-4xl font-bold font-heading text-neet-text mb-4">Meet Our Team</h2>
-            <p className="text-neet-lightText">The experts behind NEET Ace Mentor</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((member) => (
-              <Card key={member.name} className="border border-gray-100 overflow-hidden">
-                <div className="aspect-[3/4] relative">
-                  <img 
-                    src={member.image} 
-                    alt={member.name} 
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <CardContent className="pt-6">
-                  <h3 className="font-heading font-semibold text-lg text-neet-text">{member.name}</h3>
-                  <p className="text-neet-primary text-sm font-medium mb-2">{member.role}</p>
-                  <p className="text-neet-lightText text-sm">{member.bio}</p>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </div>
         
