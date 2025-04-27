@@ -1,10 +1,11 @@
 
 import { NEET_CATEGORIES } from "@/constants/blogCategories";
 import { Badge } from "@/components/ui/badge";
+import { type Category } from "@/constants/blogCategories";
 
 interface CategoryFilterProps {
-  selectedCategory: string | null;
-  onSelectCategory: (category: string | null) => void;
+  selectedCategory: Category | null;
+  onSelectCategory: (category: Category | null) => void;
 }
 
 const CategoryFilter = ({ selectedCategory, onSelectCategory }: CategoryFilterProps) => {

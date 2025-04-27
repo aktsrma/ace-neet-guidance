@@ -39,6 +39,10 @@ const Blog = () => {
     fetchBlogs();
   }, [selectedCategory]);
 
+  const handleCategorySelect = (category: Category | null) => {
+    setSelectedCategory(category);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -49,7 +53,7 @@ const Blog = () => {
           
           <CategoryFilter 
             selectedCategory={selectedCategory} 
-            onSelectCategory={setSelectedCategory} 
+            onSelectCategory={handleCategorySelect} 
           />
           
           {loading ? (
