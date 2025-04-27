@@ -16,13 +16,13 @@ const Blog = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const query = supabase
+        let query = supabase
           .from("blogs")
           .select("*")
           .order("created_at", { ascending: false });
 
         if (selectedCategory) {
-          query.contains('tags', [selectedCategory]);
+          query = query.contains('tags', [selectedCategory]);
         }
 
         const { data, error } = await query;
