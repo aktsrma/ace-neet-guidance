@@ -58,7 +58,7 @@ const Blog = () => {
           console.log("No blogs found in database, using mock data");
           const mockBlogs = [
             {
-              id: 1,
+              id: "1", // Changed from number to string
               created_at: new Date().toISOString(),
               title: "How to Prepare for NEET Chemistry",
               slug: "how-to-prepare-for-neet-chemistry",
@@ -66,11 +66,13 @@ const Blog = () => {
               excerpt: "Master NEET Chemistry with these proven strategies and study tips for better scores.",
               featured_image: "https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?q=80&w=2070&auto=format&fit=crop",
               tags: ["Chemistry", "Study Tips"],
-              author_id: "1",
-              published: true
+              author_id: "1", // Changed from number to string
+              published_at: new Date().toISOString(), // Changed 'published' to 'published_at'
+              updated_at: new Date().toISOString(), // Added required field
+              is_featured: false // Added required field
             },
             {
-              id: 2,
+              id: "2", // Changed from number to string
               created_at: new Date().toISOString(),
               title: "Biology Mnemonics for NEET",
               slug: "biology-mnemonics-for-neet",
@@ -78,11 +80,13 @@ const Blog = () => {
               excerpt: "Learn easy-to-remember mnemonics for biology topics to boost your NEET preparation.",
               featured_image: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?q=80&w=2069&auto=format&fit=crop",
               tags: ["Biology", "Memory Techniques"],
-              author_id: "1",
-              published: true
+              author_id: "1", // Changed from number to string
+              published_at: new Date().toISOString(), // Changed 'published' to 'published_at'
+              updated_at: new Date().toISOString(), // Added required field
+              is_featured: false // Added required field
             },
             {
-              id: 3,
+              id: "3", // Changed from number to string
               created_at: new Date().toISOString(),
               title: "Physics Problem-Solving Strategies for NEET",
               slug: "physics-problem-solving-strategies-for-neet",
@@ -90,11 +94,13 @@ const Blog = () => {
               excerpt: "Improve your physics problem-solving skills with these effective strategies for NEET.",
               featured_image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop",
               tags: ["Physics", "Problem Solving"],
-              author_id: "1",
-              published: true
+              author_id: "1", // Changed from number to string
+              published_at: new Date().toISOString(), // Changed 'published' to 'published_at'
+              updated_at: new Date().toISOString(), // Added required field
+              is_featured: false // Added required field
             },
             {
-              id: 4,
+              id: "4", // Changed from number to string
               created_at: new Date().toISOString(),
               title: "Time Management Tips for NEET Aspirants",
               slug: "time-management-tips-for-neet-aspirants",
@@ -102,8 +108,10 @@ const Blog = () => {
               excerpt: "Learn how to manage your study time effectively to maximize your NEET preparation.",
               featured_image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=2070&auto=format&fit=crop",
               tags: ["Study Tips", "Time Management"],
-              author_id: "1",
-              published: true
+              author_id: "1", // Changed from number to string
+              published_at: new Date().toISOString(), // Changed 'published' to 'published_at'
+              updated_at: new Date().toISOString(), // Added required field
+              is_featured: false // Added required field
             }
           ] as Tables<"blogs">[];
           

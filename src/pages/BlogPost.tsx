@@ -5,6 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Tables } from "@/integrations/supabase/types";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { toast } from "@/components/ui/use-toast";
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -14,16 +15,62 @@ const BlogPost = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
+        setLoading(true);
+        
+        // Try to fetch from Supabase
         const { data, error } = await supabase
           .from("blogs")
           .select("*")
           .eq("slug", slug)
-          .single();
+          .maybeSingle(); // Using maybeSingle instead of single to handle not found case
+        
+        if (error) {
+          console.error("Error fetching blog:", error);
+          toast({
+            title: "Error",
+            description: "Failed to load blog post. Please try again later.",
+            variant: "destructive",
+          });
+        }
 
-        if (error) throw error;
-        setBlog(data);
+        if (data) {
+          setBlog(data);
+        } else {
+          // If not found in database, use mock data for the requested slug
+          console.log("Blog not found in database, checking mock data");
+          // Create mock blog data that matches the Table type
+          const mockBlog = {
+            id: "1",
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+            title: slug === "how-to-prepare-for-neet-chemistry" 
+              ? "How to Prepare for NEET Chemistry"
+              : slug === "biology-mnemonics-for-neet"
+              ? "Biology Mnemonics for NEET"
+              : slug === "physics-problem-solving-strategies-for-neet"
+              ? "Physics Problem-Solving Strategies for NEET"
+              : slug === "time-management-tips-for-neet-aspirants"
+              ? "Time Management Tips for NEET Aspirants"
+              : "Blog Post Not Found",
+            slug: slug || "",
+            content: "<p>This is a detailed article about NEET preparation. The content provides in-depth guidance for students preparing for the NEET examination.</p><p>Start with understanding the exam pattern and syllabus. Create a study plan that covers all subjects. Practice with previous years' question papers. Take regular mock tests to assess your preparation level.</p><p>Focus on your weak areas and revise regularly. Join a study group or find a study partner for better motivation. Take care of your physical and mental health during preparation.</p>",
+            excerpt: "Comprehensive guide for NEET preparation with expert tips and strategies.",
+            featured_image: "https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?q=80&w=2070&auto=format&fit=crop",
+            author_id: "1",
+            tags: ["NEET", "Preparation", "Study Tips"],
+            published_at: new Date().toISOString(),
+            is_featured: false
+          } as Tables<"blogs">;
+          
+          setBlog(mockBlog);
+        }
       } catch (error) {
-        console.error("Error fetching blog:", error);
+        console.error("Error in blog fetch process:", error);
+        toast({
+          title: "Error",
+          description: "Something went wrong. Please try again later.",
+          variant: "destructive",
+        });
       } finally {
         setLoading(false);
       }
@@ -61,6 +108,7 @@ const BlogPost = () => {
         <main className="container mx-auto px-4 py-8">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-2xl font-bold">Blog post not found</h1>
+            <p className="mt-4">The blog post you're looking for doesn't exist or has been removed.</p>
           </div>
         </main>
         <Footer />
