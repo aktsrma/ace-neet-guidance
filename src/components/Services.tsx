@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { MessageSquare } from "lucide-react";
 
 const Services = () => {
   const services = [
@@ -75,7 +76,8 @@ const Services = () => {
                         : 'bg-white text-neet-primary border border-neet-primary hover:bg-neet-background'
                     }`}
                   >
-                    Get Started
+                    <MessageSquare className="mr-2" />
+                    Contact on WhatsApp
                   </Button>
                 </Link>
               </CardFooter>

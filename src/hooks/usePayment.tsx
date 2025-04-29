@@ -1,9 +1,8 @@
 
 import { useState } from 'react';
-import { initializePayment } from "@/utils/razorpay";
 import { toast } from "sonner";
 import { useAuth } from './useAuth';
-import { supabase } from "@/integrations/supabase/client";
+import { redirectToWhatsApp } from "@/utils/whatsapp";
 
 export const usePayment = () => {
   const [loading, setLoading] = useState(false);
@@ -11,31 +10,16 @@ export const usePayment = () => {
 
   const handlePayment = async (programId: string, amount: number) => {
     if (!user) {
-      toast.error("Please sign in to make a payment");
+      toast.error("Please sign in to contact via WhatsApp");
       return;
     }
 
     setLoading(true);
     try {
-      // Get user profile details for Razorpay prefill
-      const { data: profile } = await supabase
-        .from('profiles')
-        .select('full_name, phone')
-        .eq('id', user.id)
-        .single();
-
-      await initializePayment(
-        amount,
-        programId,
-        {
-          id: user.id,
-          email: user.email,
-          name: profile?.full_name,
-          phone: profile?.phone
-        }
-      );
+      // Redirect to WhatsApp with program details
+      redirectToWhatsApp(programId, amount, `User: ${user.email}`);
     } catch (error: any) {
-      toast.error("Payment initialization failed: " + error.message);
+      toast.error("WhatsApp redirect failed: " + error.message);
     } finally {
       setLoading(false);
     }

@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -9,6 +10,7 @@ import { toast } from "sonner";
 import { usePayment } from "@/hooks/usePayment";
 import { useAuth } from "@/hooks/useAuth";
 import { useMentorshipPrograms } from "@/hooks/useMentorshipPrograms";
+import { MessageSquare } from "lucide-react";
 
 const Mentorship = () => {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
@@ -20,7 +22,7 @@ const Mentorship = () => {
     try {
       await handlePayment(plan, amount);
     } catch (error) {
-      toast.error("Payment initialization failed. Please try again.");
+      toast.error("WhatsApp redirect failed. Please try again.");
     }
   };
 
@@ -58,7 +60,7 @@ const Mentorship = () => {
   const faqs = [
     {
       question: "How does the one-time call mentorship work?",
-      answer: "The one-time call is a 30-minute focused video session with one of our expert mentors. You can discuss your specific doubts, get guidance on study strategies, or receive advice on particular topics you're struggling with. After payment, you'll be able to select a convenient time slot for your session."
+      answer: "The one-time call is a 30-minute focused video session with one of our expert mentors. You can discuss your specific doubts, get guidance on study strategies, or receive advice on particular topics you're struggling with. After contacting us via WhatsApp, we'll arrange a convenient time slot for your session."
     },
     {
       question: "What's included in the one-year mentorship program?",
@@ -73,12 +75,12 @@ const Mentorship = () => {
       answer: "We strive for excellence in all our mentorship programs. If you're not satisfied with your session, please contact our support team within 24 hours, and we'll arrange another session with a different mentor at no additional cost."
     },
     {
-      question: "How are payments processed?",
-      answer: "We use Razorpay, a secure payment gateway, to process all payments. You can pay using credit/debit cards, UPI, net banking, or other available payment methods."
+      question: "How do I get started with a mentorship program?",
+      answer: "Simply click on the 'Contact on WhatsApp' button for your preferred program. You'll be redirected to WhatsApp where you can chat directly with our team. We'll guide you through the enrollment process and answer any questions you might have."
     },
     {
       question: "Can I upgrade from a one-time call to the yearly program?",
-      answer: "Absolutely! If you decide to upgrade after your one-time call, we'll deduct the amount you've already paid from the yearly program fee."
+      answer: "Absolutely! If you decide to upgrade after your one-time call, just let us know via WhatsApp and we'll assist you with the transition to the yearly program."
     }
   ];
 
@@ -139,7 +141,8 @@ const Mentorship = () => {
                         onClick={() => handlePaymentClick(program.price, program.title)}
                         disabled={loading}
                       >
-                        {loading ? "Processing..." : `${program.title === 'One-Time Call' ? 'Book Now' : 'Enroll Now'} - ₹${program.price}`}
+                        <MessageSquare className="mr-2" />
+                        {loading ? "Redirecting..." : `Contact on WhatsApp - ₹${program.price}`}
                       </Button>
                     </CardFooter>
                   </Card>
@@ -193,13 +196,19 @@ const Mentorship = () => {
               </p>
             </div>
             <div className="md:w-1/2 flex flex-col sm:flex-row gap-4">
-              <Button className="bg-gradient-to-r from-neet-primary to-neet-secondary hover:opacity-90 transition-opacity">
+              <Button 
+                className="bg-gradient-to-r from-neet-primary to-neet-secondary hover:opacity-90 transition-opacity"
+                onClick={() => handlePaymentClick(0, "General Inquiry")}
+              >
+                <MessageSquare className="mr-2" />
                 Contact Support
               </Button>
               <Button 
                 variant="outline" 
                 className="border-neet-primary text-neet-primary hover:bg-neet-accent/10"
+                onClick={() => handlePaymentClick(0, "Demo Call Request")}
               >
+                <MessageSquare className="mr-2" />
                 Schedule a Demo Call
               </Button>
             </div>

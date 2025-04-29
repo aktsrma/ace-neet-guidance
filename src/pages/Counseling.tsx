@@ -5,8 +5,14 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { redirectToWhatsApp } from "@/utils/whatsapp";
+import { MessageSquare } from "lucide-react";
 
 const Counseling = () => {
+  const handleContactWhatsApp = (service: string, price?: number) => {
+    redirectToWhatsApp(service, price);
+  };
+
   const topColleges = [
     {
       name: "All India Institute of Medical Sciences (AIIMS), New Delhi",
@@ -52,8 +58,8 @@ const Counseling = () => {
       answer: "We cannot guarantee admission to any specific college as admissions are ultimately determined by your NEET rank and the official counseling process conducted by relevant authorities. However, we provide expert guidance to help you make the most strategic choices based on your rank and preferences, significantly improving your chances of securing admission to your desired college."
     },
     {
-      question: "What if I need assistance after the counseling session?",
-      answer: "Our college counseling package includes follow-up support until you secure your admission. If you have any questions or need additional guidance after your initial counseling session, you can reach out to your assigned counselor for assistance without any extra charges."
+      question: "How do I get started with college counseling?",
+      answer: "Simply click on the 'Contact on WhatsApp' button on this page. You'll be redirected to WhatsApp where you can chat directly with our counseling team. We'll guide you through the process and answer any questions you might have."
     }
   ];
 
@@ -167,7 +173,13 @@ const Counseling = () => {
               </li>
             </ul>
             <div>
-              <Button className="bg-neet-primary hover:bg-neet-secondary">Book Counseling Session - ₹1999</Button>
+              <Button 
+                className="bg-neet-primary hover:bg-neet-secondary"
+                onClick={() => handleContactWhatsApp("College Counseling Session", 1999)}
+              >
+                <MessageSquare className="mr-2" />
+                Contact on WhatsApp - ₹1999
+              </Button>
             </div>
           </div>
           <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
@@ -261,7 +273,13 @@ const Counseling = () => {
               <p>
                 Our expert counselors are ready to help you find the perfect medical college that matches your rank and preferences.
               </p>
-              <Button className="bg-white text-neet-primary hover:bg-gray-100">Book Your Counseling Session</Button>
+              <Button 
+                className="bg-white text-neet-primary hover:bg-gray-100"
+                onClick={() => handleContactWhatsApp("College Counseling Package", 1999)}
+              >
+                <MessageSquare className="mr-2" />
+                Contact on WhatsApp
+              </Button>
             </div>
             <div className="space-y-4 bg-white/10 rounded-lg p-6">
               <h3 className="font-heading font-semibold text-xl">College Counseling Package</h3>
