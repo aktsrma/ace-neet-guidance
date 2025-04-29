@@ -6,6 +6,7 @@ import { Tables } from "@/integrations/supabase/types";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { toast } from "@/components/ui/use-toast";
+import SEO from "@/components/SEO";
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -81,6 +82,14 @@ const BlogPost = () => {
     }
   }, [slug]);
 
+  // For SEO purposes, extract the first few sentences from content to use as description
+  const getMetaDescription = (content: string): string => {
+    const strippedContent = content.replace(/<[^>]+>/g, '');
+    const sentences = strippedContent.split(/[.!?]+/);
+    const firstSentences = sentences.slice(0, 2).join('. ');
+    return firstSentences.length > 160 ? firstSentences.substring(0, 157) + '...' : firstSentences;
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-background">
@@ -104,6 +113,11 @@ const BlogPost = () => {
   if (!blog) {
     return (
       <div className="min-h-screen bg-background">
+        <SEO 
+          title="Blog Post Not Found"
+          description="The requested blog post could not be found."
+          canonicalUrl={`https://neetacementor.in/blog`}
+        />
         <Navbar />
         <main className="container mx-auto px-4 py-8">
           <div className="max-w-3xl mx-auto text-center">
@@ -118,6 +132,17 @@ const BlogPost = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title={blog.title}
+        description={blog.excerpt || getMetaDescription(blog.content)}
+        canonicalUrl={`https://neetacementor.in/blog/${blog.slug}`}
+        ogImage={blog.featured_image || "https://neetacementor.in/banner.png"}
+        ogType="article"
+        keywords={blog.tags ? blog.tags.join(', ') + ', NEET preparation' : 'NEET preparation, NEET guidance'}
+        isArticle={true}
+        publishedTime={blog.published_at}
+        modifiedTime={blog.updated_at}
+      />
       <Navbar />
       
       <main className="container mx-auto px-4 py-8">
@@ -128,6 +153,7 @@ const BlogPost = () => {
                 src={blog.featured_image}
                 alt={blog.title}
                 className="object-cover w-full h-full"
+                loading="lazy"
               />
             </div>
           )}
@@ -135,7 +161,7 @@ const BlogPost = () => {
           <h1 className="text-4xl font-bold mb-4">{blog.title}</h1>
           
           <div className="flex items-center gap-4 text-muted-foreground mb-8">
-            <time>{new Date(blog.created_at).toLocaleDateString()}</time>
+            <time dateTime={blog.created_at}>{new Date(blog.created_at).toLocaleDateString()}</time>
             <div className="flex gap-2">
               {blog.tags?.map((tag) => (
                 <span key={tag} className="bg-blue-100 text-blue-800 px-2 py-1 rounded">
@@ -147,6 +173,30 @@ const BlogPost = () => {
 
           <div className="prose prose-blue max-w-none" 
                dangerouslySetInnerHTML={{ __html: blog.content }} />
+               
+          <div className="mt-12 pt-8 border-t border-gray-200">
+            <h2 className="text-xl font-semibold mb-4">Share this article:</h2>
+            <div className="flex space-x-4">
+              <a href={`https://twitter.com/intent/tweet?text=${blog.title}&url=https://neetacementor.in/blog/${blog.slug}`} 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 className="text-blue-500 hover:text-blue-700">
+                Twitter
+              </a>
+              <a href={`https://www.facebook.com/sharer/sharer.php?u=https://neetacementor.in/blog/${blog.slug}`} 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 className="text-blue-800 hover:text-blue-900">
+                Facebook
+              </a>
+              <a href={`https://www.linkedin.com/shareArticle?mini=true&url=https://neetacementor.in/blog/${blog.slug}&title=${blog.title}`} 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 className="text-blue-600 hover:text-blue-800">
+                LinkedIn
+              </a>
+            </div>
+          </div>
         </article>
       </main>
 
