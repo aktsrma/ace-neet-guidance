@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { MessageSquare } from "lucide-react";
+import { redirectToWhatsApp } from "@/utils/whatsapp";
 
 const Services = () => {
   const services = [
@@ -10,25 +11,32 @@ const Services = () => {
       title: "One-Time Call",
       description: "Get your doubts cleared in a 30-minute one-on-one session with a top medical student.",
       price: "₹199",
+      priceValue: 199,
       features: ["30-minute video call", "Personalized guidance", "Study strategy discussion", "Immediate slot booking"],
-      path: "/mentorship"
+      id: "one-time-call"
     },
     {
       title: "One-Year Mentorship",
       description: "Comprehensive year-long guidance to help you ace your NEET with dedicated mentorship.",
       price: "₹1999",
+      priceValue: 1999,
       features: ["Monthly one-on-one sessions", "Study plan creation", "Performance tracking", "Mock test analysis", "24/7 doubt solving"],
-      path: "/mentorship",
+      id: "one-year-mentorship",
       highlight: true
     },
     {
       title: "College Counseling",
       description: "Expert guidance on college selection and admission process after NEET results.",
       price: "₹1999",
+      priceValue: 1999,
       features: ["Analysis of options based on rank", "College comparison guidance", "Document verification support", "Admission process assistance"],
-      path: "/counseling"
+      id: "college-counseling"
     }
   ];
+
+  const handleContactClick = (service: string, price: number) => {
+    redirectToWhatsApp(service, price);
+  };
 
   return (
     <section className="py-16 bg-white" id="services">
@@ -68,18 +76,17 @@ const Services = () => {
                 </ul>
               </CardContent>
               <CardFooter>
-                <Link to={service.path} className="w-full">
-                  <Button 
-                    className={`w-full ${
-                      service.highlight 
-                        ? 'bg-neet-primary hover:bg-neet-secondary' 
-                        : 'bg-white text-neet-primary border border-neet-primary hover:bg-neet-background'
-                    }`}
-                  >
-                    <MessageSquare className="mr-2" />
-                    Contact on WhatsApp
-                  </Button>
-                </Link>
+                <Button 
+                  onClick={() => handleContactClick(service.title, service.priceValue)}
+                  className={`w-full ${
+                    service.highlight 
+                      ? 'bg-neet-primary hover:bg-neet-secondary' 
+                      : 'bg-white text-neet-primary border border-neet-primary hover:bg-neet-background'
+                  }`}
+                >
+                  <MessageSquare className="mr-2" />
+                  Contact on WhatsApp
+                </Button>
               </CardFooter>
             </Card>
           ))}
