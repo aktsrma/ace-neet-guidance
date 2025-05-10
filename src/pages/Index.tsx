@@ -19,12 +19,20 @@ const Index = () => {
         keywords="NEET mentor, NEET preparation, NEET coaching, medical entrance exam, NEET droppers, NEET freshers"
       />
       <Navbar />
-      <Hero />
-      <Features />
-      <Services />
-      <Testimonials />
-      <BlogSection />
-      <CTASection />
+      <main>
+        <Hero />
+        <div className="py-4 bg-gradient-to-b from-white to-indigo-50/30">
+          <Features />
+        </div>
+        <div className="py-4 bg-white">
+          <Services />
+        </div>
+        <Testimonials />
+        <div className="py-4 bg-white">
+          <BlogSection />
+        </div>
+        <CTASection />
+      </main>
       <Footer />
       <AdminSetup />
     </div>

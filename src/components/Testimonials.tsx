@@ -21,7 +21,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-16 bg-neet-background">
+    <section className="py-16 bg-gradient-to-b from-white to-indigo-50/50">
       <div className="container px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-2xl md:text-4xl font-bold font-heading text-neet-primary mb-4">Success Stories</h2>
@@ -30,7 +30,8 @@ const Testimonials = () => {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="bg-neet-text/10 border-none shadow-md">
+            <Card key={index} className="bg-white border border-indigo-100 shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+              <div className="h-2 bg-gradient-to-r from-neet-gradient-1 to-neet-gradient-2"></div>
               <CardContent className="pt-6">
                 <div className="flex flex-col items-center text-center space-y-4">
                   <div>

@@ -20,19 +20,20 @@ const BlogCard = ({ blog }: BlogCardProps) => {
   };
 
   return (
-    <Card className="hover:shadow-lg transition-shadow h-full flex flex-col">
+    <Card className="hover:shadow-lg transition-shadow h-full flex flex-col overflow-hidden border border-indigo-100">
       {blog.featured_image && (
-        <div className="aspect-video relative overflow-hidden rounded-t-lg">
+        <div className="aspect-video relative overflow-hidden">
           <img
             src={blog.featured_image}
             alt={blog.title}
-            className="object-cover w-full h-full"
+            className="object-cover w-full h-full transform hover:scale-105 transition-transform duration-500"
           />
+          <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-neet-primary to-neet-accent"></div>
         </div>
       )}
       <CardHeader>
-        <CardTitle className="line-clamp-2">
-          <Link to={`/blog/${blog.slug}`} className="hover:text-blue-600 transition-colors">
+        <CardTitle className="line-clamp-2 text-lg">
+          <Link to={`/blog/${blog.slug}`} className="hover:text-neet-primary transition-colors">
             {blog.title}
           </Link>
         </CardTitle>
@@ -42,7 +43,7 @@ const BlogCard = ({ blog }: BlogCardProps) => {
         <div className="mt-auto flex flex-col gap-2">
           <div className="flex flex-wrap gap-2">
             {blog.tags && blog.tags.map((tag) => (
-              <Badge key={tag} variant="secondary" className="text-xs">
+              <Badge key={tag} variant="secondary" className="text-xs bg-indigo-100 text-neet-primary hover:bg-indigo-200">
                 {tag}
               </Badge>
             ))}
