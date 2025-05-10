@@ -164,6 +164,14 @@ const BlogEditor = () => {
     try {
       setIsSaving(true);
       
+      // Generate a slug from the title if we're creating a new post
+      const generateSlug = (title: string) => {
+        return title
+          .toLowerCase()
+          .replace(/[^\w\s]/gi, '')
+          .replace(/\s+/g, '-');
+      };
+
       const blogData = {
         title: formData.title,
         content: formData.content,
@@ -172,13 +180,15 @@ const BlogEditor = () => {
         tags: selectedTags,
         author_id: user.id,
         published_at: formData.is_published ? new Date().toISOString() : null,
+        // Add slug for new posts or use the existing one
+        slug: mode === "new" ? generateSlug(formData.title) : slug
       };
 
       let result;
       
       if (mode === "new") {
-        // Create new blog post
-        result = await supabase.from("blogs").insert([blogData]);
+        // Create new blog post - Pass the object directly, not in an array
+        result = await supabase.from("blogs").insert(blogData);
       } else {
         // Update existing blog post
         result = await supabase

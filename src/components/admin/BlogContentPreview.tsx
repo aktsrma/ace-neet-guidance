@@ -13,7 +13,16 @@ const BlogContentPreview = ({ content }: BlogContentPreviewProps) => {
   }, []);
 
   if (!isMounted) {
-    return <div className="animate-pulse bg-gray-200 h-full w-full" />;
+    return <div className="animate-pulse bg-gray-200 h-full w-full rounded-md" />;
+  }
+
+  // If content is empty, show a placeholder
+  if (!content.trim()) {
+    return (
+      <div className="prose max-w-none text-gray-400 italic">
+        <p>Preview will appear here as you type content...</p>
+      </div>
+    );
   }
 
   return (

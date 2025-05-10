@@ -38,3 +38,6 @@ export const NEET_CATEGORIES = [
 ] as const;
 
 export type Category = typeof NEET_CATEGORIES[number]["name"];
+
+// Export the category names as an array for easier usage in dropdowns
+export const blogCategories = NEET_CATEGORIES.map(category => category.name);
