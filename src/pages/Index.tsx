@@ -8,6 +8,7 @@ import BlogSection from "@/components/BlogSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import AdminSetup from "@/components/AdminSetup";
 
 const Index = () => {
   return (
@@ -25,6 +26,7 @@ const Index = () => {
       <BlogSection />
       <CTASection />
       <Footer />
+      <AdminSetup />
     </div>
   );
 };
